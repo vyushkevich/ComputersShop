@@ -3,7 +3,7 @@
 Se requiere desarrollar un programa que modele una tienda de computadores. 
 
 
-La tienda posee los siguientes atributos:
+**La tienda posee los siguientes atributos:**
 
 
 Nombre de la tienda.
@@ -13,7 +13,7 @@ Propietario de la tienda.
 Identificador tributario de la tienda.
 
 
-Los computadores de la tienda tienen los siguientes atributos:
+**Los computadores de la tienda tienen los siguientes atributos:**
 
 
 Marca del computador.
@@ -27,7 +27,7 @@ Sistema operativo.
 Precio del computador.
 
 
-El programa debe poseer métodos que permitan:
+**El programa debe poseer métodos que permitan:**
 
 
 Agregar un computador a la tienda.
@@ -39,7 +39,7 @@ Buscar un computador en la tienda dada su marca.
 Listar la información de todos los computadores que tiene la tienda.
 
 
-Requisitos:
+**Requisitos:**
 
 
 Diagrama UML de clases
@@ -47,7 +47,7 @@ Diagrama UML de clases
 Tests unitarios obligatorios (cobertura mínima 70%)
 
 
-Entregables:
+**Entregables:**
 
 
 Repositorio de Github
