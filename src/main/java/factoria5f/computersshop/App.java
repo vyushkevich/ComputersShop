@@ -1,17 +1,15 @@
 package factoria5f.computersshop;
 
-/**
- * Hello world!
- */
-public final class App {
-    private App() {
-    }
+import factoria5f.computersshop.Controller.ShopController;
+import factoria5f.computersshop.Model.Shop;
+import factoria5f.computersshop.View.ShopView;
 
-    /**
-     * Says hello to the world.
-     * @param args The arguments of the program.
-     */
+public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Shop shop = new Shop("TechWorld", "Alice", "123456789");
+        ShopView view = new ShopView();
+        ShopController controller = new ShopController(shop, view);
+
+        controller.start();
     }
 }
