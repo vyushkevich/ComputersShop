@@ -34,4 +34,30 @@ public class ShopTest {
         assertNotNull(shop.findComputer("Dell"));
         assertNull(shop.findComputer("Apple"));
     }
+
+    @Test
+public void testAddMultipleComputers() {
+    Shop shop = new Shop("Tech Haven", "Alice", "12345-TX");
+    Computer computer1 = new Computer("Dell", 16, "Intel i7", "Windows 10", 1200.0);
+    Computer computer2 = new Computer("Apple", 8, "M1", "macOS", 1500.0);
+
+    shop.addComputer(computer1);
+    shop.addComputer(computer2);
+
+    assertEquals(2, shop.listComputers().size());
+}
+
+@Test
+public void testRemoveNonExistentComputer() {
+    Shop shop = new Shop("Tech Haven", "Alice", "12345-TX");
+    assertFalse(shop.removeComputer("NonExistent"));
+}
+
+@Test
+public void testSetOwner() {
+    Shop shop = new Shop("Tech Haven", "Alice", "12345-TX");
+    shop.setOwner("Bob");
+    assertEquals("Bob", shop.getOwner());
+}
+
 }
