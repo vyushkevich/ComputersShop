@@ -1,0 +1,45 @@
+@startuml ComputersShop
+class Shop {
+    - shopName: String
+    - owner: String
+    - taxId: String
+    - computers: List<Computer>
+    + getShopName(): String
+    + getOwner(): String
+    + setOwner(owner: String): void
+    + getTaxId(): String
+    + addComputer(computer: Computer): void
+    + removeComputer(brand: String): boolean
+    + findComputer(brand: String): Computer
+    + listComputers(): List<Computer>
+}
+
+class Computer {
+    - brand: String
+    - memory: int
+    - processor: String
+    - operatingSystem: String
+    - price: double
+    + getBrand(): String
+    + getMemory(): int
+    + getProcessor(): String
+    + getOperatingSystem(): String
+    + getPrice(): double
+    + toString(): String
+}
+
+class ShopController {
+    - shop: Shop
+    - view: ShopView
+    + start(): void
+}
+
+class ShopView {
+    + displayMessage(message: String): void
+    + displayComputers(computers: List<Computer>): void
+}
+
+Shop "1" --> "*" Computer
+ShopController --> Shop
+ShopController --> ShopView
+@enduml
