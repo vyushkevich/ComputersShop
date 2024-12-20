@@ -1,4 +1,3 @@
-// Computer.java
 package factoria5f.computersshop.Model;
 
 public class Computer {
@@ -16,12 +15,25 @@ public class Computer {
         this.price = price;
     }
 
-    // Getters
-    public String getBrand() { return brand; }
-    public int getMemory() { return memory; }
-    public String getProcessor() { return processor; }
-    public String getOperatingSystem() { return operatingSystem; }
-    public double getPrice() { return price; }
+    public String getBrand() {
+        return brand;
+    }
+
+    public int getMemory() {
+        return memory;
+    }
+
+    public String getProcessor() {
+        return processor;
+    }
+
+    public String getOperatingSystem() {
+        return operatingSystem;
+    }
+
+    public double getPrice() {
+        return price;
+    }
 
     @Override
     public String toString() {

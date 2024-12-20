@@ -16,6 +16,22 @@ public class Shop {
         this.computers = new ArrayList<>();
     }
 
+    public String getShopName() {
+        return shopName;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getTaxId() {
+        return taxId;
+    }
+
     public void addComputer(Computer computer) {
         computers.add(computer);
     }

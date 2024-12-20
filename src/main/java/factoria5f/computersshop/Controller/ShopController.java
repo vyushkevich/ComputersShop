@@ -1,15 +1,13 @@
-// ShopController.java
 package factoria5f.computersshop.Controller;
 
-import factoria5f.computersshop.Model.Computer;
 import factoria5f.computersshop.Model.Shop;
 import factoria5f.computersshop.View.ShopView;
 
 import java.util.Scanner;
 
 public class ShopController {
-    private Shop shop;
-    private ShopView view;
+    private final Shop shop;
+    private final ShopView view;
 
     public ShopController(Shop shop, ShopView view) {
         this.shop = shop;
@@ -18,71 +16,41 @@ public class ShopController {
 
     public void start() {
         Scanner scanner = new Scanner(System.in);
-        int option;
 
-        do {
-            view.displayMessage("""
-                    Select an option:
-                    1. Add a computer
-                    2. Remove a computer by brand
-                    3. Find a computer by brand
-                    4. List all computers
-                    5. Exit
-                    """);
-            option = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+        while (true) {
+            view.displayMessage("Welcome to " + shop.getShopName() + "!");
+            view.displayMessage("1. View Shop Details");
+            view.displayMessage("2. Update Owner");
+            view.displayMessage("3. View All Computers");
+            view.displayMessage("4. Exit");
+            System.out.print("Choose an option: ");
 
-            switch (option) {
-                case 1 -> addComputer(scanner);
-                case 2 -> removeComputer(scanner);
-                case 3 -> findComputer(scanner);
-                case 4 -> listComputers();
-                case 5 -> view.displayMessage("Exiting...");
-                default -> view.displayMessage("Invalid option. Please try again.");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline character
+
+            switch (choice) {
+                case 1:
+                    view.displayMessage("Shop Details:");
+                    view.displayMessage("Name: " + shop.getShopName());
+                    view.displayMessage("Owner: " + shop.getOwner());
+                    view.displayMessage("Tax ID: " + shop.getTaxId());
+                    break;
+                case 2:
+                    System.out.print("Enter new owner's name: ");
+                    String newOwner = scanner.nextLine();
+                    shop.setOwner(newOwner);
+                    view.displayMessage("Owner updated successfully!");
+                    break;
+                case 3:
+                    view.displayComputers(shop.listComputers());
+                    break;
+                case 4:
+                    view.displayMessage("Thank you for visiting " + shop.getShopName() + "!");
+                    scanner.close();
+                    return;
+                default:
+                    view.displayMessage("Invalid option. Please try again.");
             }
-        } while (option != 5);
-    }
-
-    private void addComputer(Scanner scanner) {
-        view.displayMessage("Enter brand:");
-        String brand = scanner.nextLine();
-        view.displayMessage("Enter memory (in GB):");
-        int memory = scanner.nextInt();
-        scanner.nextLine(); // consume newline
-        view.displayMessage("Enter processor:");
-        String processor = scanner.nextLine();
-        view.displayMessage("Enter operating system:");
-        String os = scanner.nextLine();
-        view.displayMessage("Enter price:");
-        double price = scanner.nextDouble();
-
-        Computer computer = new Computer(brand, memory, processor, os, price);
-        shop.addComputer(computer);
-        view.displayMessage("Computer added successfully!");
-    }
-
-    private void removeComputer(Scanner scanner) {
-        view.displayMessage("Enter brand to remove:");
-        String brand = scanner.nextLine();
-        if (shop.removeComputer(brand)) {
-            view.displayMessage("Computer removed successfully!");
-        } else {
-            view.displayMessage("No computer found with that brand.");
         }
-    }
-
-    private void findComputer(Scanner scanner) {
-        view.displayMessage("Enter brand to search:");
-        String brand = scanner.nextLine();
-        Computer computer = shop.findComputer(brand);
-        if (computer != null) {
-            view.displayMessage("Computer found: " + computer);
-        } else {
-            view.displayMessage("No computer found with that brand.");
-        }
-    }
-
-    private void listComputers() {
-        view.displayComputers(shop.listComputers());
     }
 }
