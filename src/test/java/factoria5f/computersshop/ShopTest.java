@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import factoria5f.computersshop.Model.Computer;
 import factoria5f.computersshop.Model.Shop;
 
+
 public class ShopTest {
     @Test
     public void testAddComputer() {
@@ -60,4 +61,20 @@ public void testSetOwner() {
     assertEquals("Bob", shop.getOwner());
 }
 
+@Test
+public void testComputerConstructor() {
+    Computer computer = new Computer("Dell", 16, "Intel i7", "Windows 10", 1200.0);
+    assertEquals("Dell", computer.getBrand());
+    assertEquals(16, computer.getMemory());
+    assertEquals("Intel i7", computer.getProcessor());
+    assertEquals("Windows 10", computer.getOperatingSystem());
+    assertEquals(1200.0, computer.getPrice(), 0.01);
+}
+
+@Test
+public void testComputerToString() {
+    Computer computer = new Computer("Dell", 16, "Intel i7", "Windows 10", 1200.0);
+    String expected = "Brand: Dell, Memory: 16GB, Processor: Intel i7, OS: Windows 10, Price: $1200.0";
+    assertEquals(expected, computer.toString());
+}
 }
